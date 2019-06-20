@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.office.dao.ClazzDao">
+
+    <select id="selectClazzByProfessionalName" resultType="com.zx.office.entity.Clazz">
+        select c.clazz_id,c.clazz_name from clazz c right join professional p
+        on c.professional_id = p.professional_id
+        where p.professional_name = #{professionalName}
+    </select>
+
+</mapper>

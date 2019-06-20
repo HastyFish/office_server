@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.office.dao.StudentDao">
+
+    <select id="selectAllStudent" resultType="com.zx.office.entity.Student">
+        select s.student_id, s.student_name, s.student_sex ,s.student_enrollment, s.clazz_id
+        from student s right join clazz c on s.clazz_id = c.clazz_id
+        where s.clazz_id = #{clazzId}
+    </select>
+
+</mapper>

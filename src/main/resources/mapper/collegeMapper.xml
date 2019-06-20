@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zx.office.dao.CollegeDao">
+    <resultMap id="selectAllCollege" type="com.zx.office.entity.College">
+        <id property="collegeId" column="college_id"/>
+        <result property="collegeName" column="college_name"/>
+        <collection property="professionalList" ofType="com.zx.office.entity.Professional">
+            <id property="professionalId" column="professional_id"/>
+            <result property="professionalName" column="professional_name"/>
+        </collection>
+    </resultMap>
+    <select id="selectCollege" resultMap="selectAllCollege">
+            select c.college_id, c.college_name, p.professional_id, p.professional_name
+            from college c left join professional p on c.college_id = p.college_id
+    </select>
+</mapper>
